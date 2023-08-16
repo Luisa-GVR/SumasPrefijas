@@ -32,6 +32,7 @@ public class Main {
             System.arraycopy(row, 0, dataArray[rowIdx], 0, row.length);
             rowIdx++;
         }
+        br.close();
 
         int lineaLeer = 0;
         for (int i = 0; i < numCols; i++) {
