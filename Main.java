@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.HashMap;
 import java.util.List;
 
@@ -48,11 +46,18 @@ public class Main {
             salesNumber[i] = Double.parseDouble(tempLine);
         }
 
+        String userhome = System.getProperty("user.home");
+        String desktopPath = userhome + "\\Desktop\\sumasPrefijasTotal.csv";
+        File desktopFile = new File(desktopPath);
+
+        BufferedWriter bw = new BufferedWriter(new FileWriter(desktopFile));
+
         double suma=0;
         for (int i = 1; i < salesNumber.length; i++) {
             suma += salesNumber[i];
-            System.out.printf("%d. %.2f%n", i, suma);
-        }
+            String formato = String.format("%d,%.2f%n", i, suma);
+            bw.write(formato);
+        } bw.flush();
 
     }
 }
